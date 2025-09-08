@@ -1,4 +1,4 @@
-# AR4 ROS Driver
+# AR4 ROS Driver(Originally written by ycheng517)
 
 ROS 2 driver of the AR4 robot arm from [Annin Robotics](https://www.anninrobotics.com).
 Tested with ROS 2 Jazzy on Ubuntu 24.04. Also has branch for Humble
@@ -56,7 +56,7 @@ The following projects showcases additional features and capabilities built on t
 - Install [ROS 2 Jazzy](https://docs.ros.org/en/jazzy/Installation.html) for Ubuntu 24.04
 - Clone this repository:
   ```bash
-  git clone https://github.com/ycheng517/ar4_ros_driver
+  [git clone https://github.com/koghalai123/ar4_ros_driver/tree/main]
   ```
 - Install workspace dependencies:
   ```bash
