@@ -56,7 +56,7 @@ The following projects showcases additional features and capabilities built on t
 - Install [ROS 2 Jazzy](https://docs.ros.org/en/jazzy/Installation.html) for Ubuntu 24.04
 - Clone this repository:
   ```bash
-  [git clone https://github.com/koghalai123/ar4_ros_driver/tree/main]
+  git clone https://github.com/koghalai123/ar4_ros_driver/tree/main
   ```
 - Install workspace dependencies:
   ```bash
