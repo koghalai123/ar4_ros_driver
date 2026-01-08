@@ -1,5 +1,7 @@
 # AR4 ROS Driver(Originally written by ycheng517)
 
+Added cameras to the gazebo world(was a ton of trouble and involved adding sensors plugin, as well as default plugins that no longer get loaded automatically once sensors are loaded)
+
 ROS 2 driver of the AR4 robot arm from [Annin Robotics](https://www.anninrobotics.com).
 Tested with ROS 2 Jazzy on Ubuntu 24.04. Also has branch for Humble
 [here](https://github.com/ycheng517/ar4_ros_driver/tree/humble).
