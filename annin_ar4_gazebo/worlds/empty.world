@@ -6,9 +6,9 @@
       <real_time_factor>1.0</real_time_factor>
     </physics>
 
-    <gui fullscreen="0">
-
-      <!-- 3D scene -->
+    
+    
+    <gui fullscreen="0">      <!-- 3D scene -->
       <plugin filename="MinimalScene" name="3D View">
         <gz-gui>
           <title>3D View</title>
@@ -28,6 +28,7 @@
       </plugin>
 
       <!-- Plugins that add functionality to the scene -->
+      
       <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
         <gz-gui>
           <property key="state" type="string">floating</property>
@@ -254,6 +255,29 @@
       </plugin>
 
     </gui>
+
+    <!-- Core system plugins -->
+    <plugin
+      filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+
+    <plugin
+      filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+
+    <!-- Sensors system plugin to enable camera and other sensor data publishing -->
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
   
     <gravity>0 0 0</gravity>
 
@@ -270,6 +294,46 @@
       </attenuation>
       <direction>-0.5 0.1 -0.9</direction>
     </light>
+
+    <!-- RGB Camera - positioned 2m high, pointing straight down -->
+    
+    <model name="rgb_camera">
+      <pose>0 0 2.0 0 1.5708 0</pose>
+      <static>true</static>
+      
+      <link name="link">
+        <pose>0 0 0 0 0 0</pose>
+        
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+        </visual>
+
+        <sensor type="camera" name="camera_sensor">
+          <pose>0 0 0 0 0 0</pose>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>rgb_camera/image</topic>
+        </sensor>
+      </link>
+    </model>   
+    
 
   </world>
 </sdf>
