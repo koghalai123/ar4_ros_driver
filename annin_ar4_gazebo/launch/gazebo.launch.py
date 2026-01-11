@@ -121,7 +121,11 @@ def generate_launch_description():
     gazebo_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
-        arguments=["/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock"],
+        arguments=[
+            "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
+            "/rgb_camera_moving/image@sensor_msgs/msg/Image@gz.msgs.Image",
+            "/rgb_camera_moving/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo",
+        ],
         output='screen')
 
     gazebo = IncludeLaunchDescription(

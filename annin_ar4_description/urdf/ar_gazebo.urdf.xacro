@@ -41,6 +41,37 @@
     tf_prefix="$(arg tf_prefix)"
   />
 
+  <!-- Camera link fixed to end-effector -->
+  <link name="$(arg tf_prefix)ee_camera_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <material name="camera_material">
+        <color rgba="0.2 0.2 0.8 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="$(arg tf_prefix)ee_camera_fixed" type="fixed">
+    <parent link="$(arg tf_prefix)ee_link"/>
+    <child link="$(arg tf_prefix)ee_camera_link"/>
+    <!-- Adjust pose to your mount; z offset puts it ahead of flange -->
+    <origin xyz="0 0 0.02" rpy="0 0 0"/>
+  </joint>
+
   <gazebo reference="world" />
   <gazebo>
     <plugin filename="libgz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
@@ -49,5 +80,28 @@
         <namespace>$(arg namespace)</namespace>
       </ros>
     </plugin>
+  </gazebo>
+
+  <!-- Gazebo Sim camera sensor attached to ee_camera_link -->
+  <gazebo reference="$(arg tf_prefix)ee_camera_link">
+    <sensor type="camera" name="ee_camera_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>320</width>
+          <height>240</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>rgb_camera_moving/image</topic>
+    </sensor>
   </gazebo>
 </robot>

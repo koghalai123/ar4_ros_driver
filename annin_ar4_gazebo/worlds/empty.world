@@ -296,7 +296,7 @@
     </light>
 
     <!-- RGB Camera - positioned 2m high, pointing straight down -->
-    
+    <!--
     <model name="rgb_camera">
       <pose>0 0 2.0 0 1.5708 0</pose>
       <static>true</static>
@@ -333,7 +333,7 @@
         </sensor>
       </link>
     </model>   
-    
+    -->
 
   </world>
 </sdf>
