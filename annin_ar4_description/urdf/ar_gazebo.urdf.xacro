@@ -91,12 +91,24 @@
         <image>
           <width>320</width>
           <height>240</height>
+          <format>R8G8B8</format>
         </image>
         <clip>
           <near>0.1</near>
           <far>10.0</far>
         </clip>
       </camera>
+      <depth_camera>
+        <image>
+          <width>320</width>
+          <height>240</height>
+          <format>FLOAT32</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>10.0</far>
+        </clip>
+      </depth_camera>
       <always_on>1</always_on>
       <update_rate>30</update_rate>
       <visualize>true</visualize>
