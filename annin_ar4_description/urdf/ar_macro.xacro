@@ -9,9 +9,20 @@
 
     <xacro:property name="robot_parameters" value="${xacro.load_yaml(robot_parameters_file)}"/>
 
+    <!-- Apply external rotation/translation to a mount link, keep internal joints untouched -->
+    <link name="${tf_prefix}base_mount" />
+
+    <!-- Parent -> base_mount with provided origin (rotation/translation) -->
     <joint name="${tf_prefix}base_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
+      <child link="${tf_prefix}base_mount" />
+    </joint>
+
+    <!-- base_mount -> base_link identity transform -->
+    <joint name="${tf_prefix}base_mount_to_base" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <parent link="${tf_prefix}base_mount" />
       <child link="${tf_prefix}base_link" />
     </joint>
 
