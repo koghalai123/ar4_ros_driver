@@ -15,7 +15,7 @@
     parent="world"
     robot_parameters_file="$(find annin_ar4_description)/config/$(arg ar_model).yaml"
   >
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 4.712" />
   </xacro:ar_robot>
   <xacro:ar_gripper 
     tf_prefix="$(arg tf_prefix)"
