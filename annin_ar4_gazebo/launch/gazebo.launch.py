@@ -51,6 +51,8 @@ def generate_launch_description():
                                           default_value="",
                                           description="Prefix for AR4 tf_tree")
     tf_prefix = LaunchConfiguration("tf_prefix")
+    base_yaw_arg = DeclareLaunchArgument("base_yaw", default_value="4.712", description="Base rotation (yaw) in radians")
+    base_yaw = LaunchConfiguration("base_yaw")
 
     initial_joint_controllers = ControllerConfigSubstitution(
         PathJoinSubstitution([
@@ -75,6 +77,9 @@ def generate_launch_description():
         " ",
         "simulation_controllers:=",
         initial_joint_controllers,
+        " ",
+        "base_yaw:=",
+        base_yaw,
     ])
     robot_description = {"robot_description": robot_description_content}
 
@@ -150,6 +155,7 @@ def generate_launch_description():
     return LaunchDescription([
         ar_model_arg,
         tf_prefix_arg,
+        base_yaw_arg,
         gazebo_bridge,
         gazebo,
         gazebo_spawn_robot,

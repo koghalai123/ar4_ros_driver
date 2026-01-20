@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="$(arg ar_model)">
   <xacro:arg name="tf_prefix" default="" />
   <xacro:arg name="include_gripper" default="true"/>
+  <xacro:arg name="base_yaw" default="4.712"/> <!-- Add this line -->
 
   <xacro:include filename="$(find annin_ar4_description)/urdf/ar_macro.xacro"/>
 
@@ -11,7 +12,7 @@
     parent="world"
     robot_parameters_file="$(find annin_ar4_description)/config/$(arg ar_model).yaml"
   >
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 $(arg base_yaw)" /> <!-- Change here -->
   </xacro:ar_robot>
 
   <xacro:if value="$(arg include_gripper)">

@@ -77,6 +77,7 @@ def generate_launch_description():
             description="Run moveit2 servo",
         ))
 
+    base_yaw = LaunchConfiguration("base_yaw")
     robot_description_content = Command([
         PathJoinSubstitution([FindExecutable(name="xacro")]),
         " ",
@@ -92,6 +93,9 @@ def generate_launch_description():
         " ",
         "include_gripper:=",
         include_gripper,
+        " ",
+        "base_yaw:=",
+        base_yaw,
     ])
     robot_description = {"robot_description": robot_description_content}
 
