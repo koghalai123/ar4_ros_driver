@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="$(arg ar_model)">
   <xacro:arg name="tf_prefix" default="" />
   <xacro:arg name="include_gripper" default="true"/>
-  <xacro:arg name="base_yaw" default="4.712"/> <!-- Add this line -->
+  <xacro:arg name="base_yaw" default="0"/> <!-- Add this line -->
 
   <xacro:include filename="$(find annin_ar4_description)/urdf/ar_macro.xacro"/>
 
