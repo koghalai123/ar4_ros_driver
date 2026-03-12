@@ -201,6 +201,13 @@ Visualization Manager:
         Show Robot Visual: true
       Value: true
       Velocity_Scaling_Factor: 1
+    - Class: rviz_default_plugins/Axes
+      Enabled: true
+      Length: 0.1
+      Name: CameraAxes
+      Radius: 0.01
+      Reference Frame: ee_camera_link
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48

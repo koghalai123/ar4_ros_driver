@@ -52,16 +52,25 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.02 0.02 0.02"/>
+        <box size="0.05 0.03 0.03"/>
       </geometry>
       <material name="camera_material">
         <color rgba="0.2 0.2 0.8 1"/>
       </material>
     </visual>
+    <visual>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.012" length="0.02"/>
+      </geometry>
+      <material name="camera_lens">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.02 0.02 0.02"/>
+        <box size="0.05 0.03 0.03"/>
       </geometry>
     </collision>
   </link>
@@ -69,8 +78,8 @@
   <joint name="$(arg tf_prefix)ee_camera_fixed" type="fixed">
     <parent link="$(arg tf_prefix)ee_link"/>
     <child link="$(arg tf_prefix)ee_camera_link"/>
-    <!-- Adjust pose to your mount; z offset puts it ahead of flange -->
-    <origin xyz="0 0 0.02" rpy="0 0 0"/>
+    <!-- Offset sideways (X) to clear the gripper -->
+    <origin xyz="0.05 0 0.02" rpy="0 0 0"/>
   </joint>
 
   <gazebo reference="world" />
