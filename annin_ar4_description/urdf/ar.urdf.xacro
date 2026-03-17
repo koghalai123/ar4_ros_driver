@@ -36,6 +36,6 @@
     <parent link="$(arg tf_prefix)ee_link"/>
     <child link="$(arg tf_prefix)ee_camera_link"/>
     <!-- Adjust xyz/rpy to match your physical camera mount -->
-    <origin xyz="0 0 0.02" rpy="0 0 0"/>
+    <origin xyz="-0.05 0 0.02" rpy="0 0 0"/>
   </joint>
 </robot>

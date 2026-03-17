@@ -208,6 +208,23 @@ Visualization Manager:
       Radius: 0.01
       Reference Frame: ee_camera_link
       Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: ArucoMarkers
+      Namespaces:
+        aruco_axes: true
+        aruco_back: true
+        aruco_body: true
+        aruco_front: true
+        aruco_labels: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /aruco_markers_viz
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
