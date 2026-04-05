@@ -217,6 +217,7 @@ Visualization Manager:
         aruco_body: true
         aruco_front: true
         aruco_labels: true
+        camera_pose: true
       Topic:
         Depth: 5
         Durability Policy: Volatile
