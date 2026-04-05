@@ -33,12 +33,12 @@
     constraints:
       stopped_velocity_tolerance: 0.02
       goal_time: 0.0
-      $(var tf_prefix)joint_1: { trajectory: 0.2, goal: 0.02 }
-      $(var tf_prefix)joint_2: { trajectory: 0.2, goal: 0.02 }
-      $(var tf_prefix)joint_3: { trajectory: 0.2, goal: 0.02 }
-      $(var tf_prefix)joint_4: { trajectory: 0.2, goal: 0.02 }
-      $(var tf_prefix)joint_5: { trajectory: 0.2, goal: 0.02 }
-      $(var tf_prefix)joint_6: { trajectory: 0.2, goal: 0.02 }
+      $(var tf_prefix)joint_1: { trajectory: 30000.0, goal: 0.02 }
+      $(var tf_prefix)joint_2: { trajectory: 30000.0, goal: 0.02 }
+      $(var tf_prefix)joint_3: { trajectory: 30000.0, goal: 0.02 }
+      $(var tf_prefix)joint_4: { trajectory: 30000.0, goal: 0.02 }
+      $(var tf_prefix)joint_5: { trajectory: 30000.0, goal: 0.02 }
+      $(var tf_prefix)joint_6: { trajectory: 30000.0, goal: 0.02 }
 
     gains: # Required because we're controlling a velocity interface
       # p is intentionally small for hardware (ff term does most of the work via steppers).
