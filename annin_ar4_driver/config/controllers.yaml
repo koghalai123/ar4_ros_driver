@@ -38,7 +38,12 @@
       $(var tf_prefix)joint_3: { trajectory: 30000.0, goal: 0.02 }
       $(var tf_prefix)joint_4: { trajectory: 30000.0, goal: 0.02 }
       $(var tf_prefix)joint_5: { trajectory: 30000.0, goal: 0.02 }
-      $(var tf_prefix)joint_6: { trajectory: 30000.0, goal: 0.02 }
+      # J6 reliably settles ~2-4 deg short of target at the large angles the
+      # calibration commands, exceeding a 0.02 rad goal tolerance and aborting
+      # the move (-6). Loosened to 0.10 rad (~5.7 deg) so the goal completes;
+      # calibration records the ACTUAL measured pose, so a few deg of J6 slack
+      # does not affect the data.
+      $(var tf_prefix)joint_6: { trajectory: 30000.0, goal: 0.10 }
 
     gains: # Required because we're controlling a velocity interface
       # p is intentionally small for hardware (ff term does most of the work via steppers).

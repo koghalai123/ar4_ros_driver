@@ -162,9 +162,15 @@ def generate_launch_description():
 
     trajectory_execution = {
         "moveit_manage_controllers": False,
-        "trajectory_execution.allowed_execution_duration_scaling": 1.2,
-        "trajectory_execution.allowed_goal_duration_margin": 0.5,
-        "trajectory_execution.allowed_start_tolerance": 0.01,
+        # Generous margins: the physical AR4 (stepper-driven) executes slower than
+        # the planned profile; the defaults (1.2 / 0.5) cancel motions with TIMED_OUT (-6).
+        "trajectory_execution.allowed_execution_duration_scaling": 4.0,
+        "trajectory_execution.allowed_goal_duration_margin": 5.0,
+        # The steppers drift a few tenths of a degree (esp. after a contact move like
+        # the plate scrape), so the tight 0.01 rad default rejected the next motion
+        # with CONTROL_FAILED (-4): "start point deviates from current robot state".
+        # 0.1 rad (~5.7 deg) tolerates that drift while still catching gross mismatches.
+        "trajectory_execution.allowed_start_tolerance": 0.1,
     }
 
     planning_scene_monitor_parameters = {
