@@ -6,7 +6,7 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-from launch_ros.parameter_descriptions import ParameterFile
+from launch_ros.parameter_descriptions import ParameterFile, ParameterValue
 from launch.substitutions import (
     Command,
     FindExecutable,
@@ -53,7 +53,10 @@ def generate_launch_description():
         "tf_prefix:=",
         tf_prefix,
     ])
-    robot_description = {"robot_description": robot_description_content}
+    robot_description = {
+        "robot_description":
+        ParameterValue(robot_description_content, value_type=str)
+    }
 
     # MoveIt Configuration
     robot_description_semantic_content = Command([
@@ -71,7 +74,8 @@ def generate_launch_description():
         tf_prefix,
     ])
     robot_description_semantic = {
-        "robot_description_semantic": robot_description_semantic_content
+        "robot_description_semantic":
+        ParameterValue(robot_description_semantic_content, value_type=str)
     }
 
     robot_description_kinematics = {

@@ -14,12 +14,20 @@
       <joint name="${tf_prefix}joint_6" />
       <joint name="${tf_prefix}ee_joint"/>
     </group>
+    <!-- Home: the all-zero pose lifted 5 cm in +z, with x/y and the tool axis
+         unchanged (zeros put link_6 at z=0.434 m, tool pointing straight down).
+         joint_2/joint_5 pitch by opposite amounts so the tool keeps pointing
+         down, joint_3 takes up the lateral drift. The clearance matters because
+         a gripper closes at home without the arm moving, and the planner has no
+         way to back the arm off. Keep in sync with the initial_value params in
+         annin_ar4_description/urdf/ar_gazebo.urdf.xacro so the sim spawns here,
+         and note ar4Automating3DPrinter's go_home reads THIS state at runtime. -->
     <group_state name="home" group="ar_manipulator">
       <joint name="${tf_prefix}joint_1" value="0" />
-      <joint name="${tf_prefix}joint_2" value="0" />
-      <joint name="${tf_prefix}joint_3" value="0" />
+      <joint name="${tf_prefix}joint_2" value="0.0187" />
+      <joint name="${tf_prefix}joint_3" value="-0.2455" />
       <joint name="${tf_prefix}joint_4" value="0" />
-      <joint name="${tf_prefix}joint_5" value="0" />
+      <joint name="${tf_prefix}joint_5" value="0.2268" />
       <joint name="${tf_prefix}joint_6" value="0" />
     </group_state>
     <group_state name="upright" group="ar_manipulator">

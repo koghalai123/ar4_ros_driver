@@ -10,7 +10,15 @@
     joint_offset_parameters_file
     driver_parameters_file
     tf_prefix
+    j1_home:=0.0 j2_home:=0.0 j3_home:=0.0 j4_home:=0.0 j5_home:=0.0 j6_home:=0.0
   ">
+
+    <!-- j*_home feeds the position state interfaces' initial_value below, i.e.
+         the pose a SIMULATED arm starts at. Defaults are zeros so the real
+         driver's behaviour is unchanged (it reports actual encoder positions and
+         ignores initial_value); ar_gazebo.urdf.xacro passes the 'home'
+         group_state from annin_ar4_moveit_config/srdf/ar_macro.srdf.xacro, so
+         the sim spawns exactly where RViz's home button sends the arm. -->
 
     <xacro:property name="robot_parameters"
       value="${xacro.load_yaml(robot_parameters_file)}"/>
@@ -40,7 +48,7 @@
         </command_interface>
         <command_interface name="velocity" />
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">${j1_home}</param>
         </state_interface>
         <state_interface name="velocity">
           <param name="initial_value">0.0</param>
@@ -55,7 +63,7 @@
         </command_interface>
         <command_interface name="velocity" />
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">${j2_home}</param>
         </state_interface>
         <state_interface name="velocity">
           <param name="initial_value">0.0</param>
@@ -70,7 +78,7 @@
         </command_interface>
         <command_interface name="velocity" />
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">${j3_home}</param>
         </state_interface>
         <state_interface name="velocity">
           <param name="initial_value">0.0</param>
@@ -85,7 +93,7 @@
         </command_interface>
         <command_interface name="velocity" />
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">${j4_home}</param>
         </state_interface>
         <state_interface name="velocity">
           <param name="initial_value">0.0</param>
@@ -100,7 +108,7 @@
         </command_interface>
         <command_interface name="velocity" />
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">${j5_home}</param>
         </state_interface>
         <state_interface name="velocity">
           <param name="initial_value">0.0</param>
@@ -115,7 +123,7 @@
         </command_interface>
         <command_interface name="velocity" />
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">${j6_home}</param>
         </state_interface>
         <state_interface name="velocity">
           <param name="initial_value">0.0</param>

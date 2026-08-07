@@ -23,6 +23,10 @@
     parent="$(arg tf_prefix)ee_link"
   />
 
+  <!-- j*_home: the pose gz spawns the arm at. MUST match the 'home' group_state
+       in annin_ar4_moveit_config/srdf/ar_macro.srdf.xacro (the all-zero pose
+       lifted 5 cm, so a gripper closing at home clears the floor) — otherwise
+       the arm spawns somewhere RViz's home button will not return it to. -->
   <xacro:ar_ros2_control
     ar_model="$(arg ar_model)"
     plugin_name="gz_ros2_control/GazeboSimSystem"
@@ -32,6 +36,8 @@
     joint_offset_parameters_file="$(find annin_ar4_driver)/config/joint_offsets/$(arg ar_model).yaml"
     driver_parameters_file="$(find annin_ar4_driver)/config/driver.yaml"
     tf_prefix="$(arg tf_prefix)"
+    j1_home="0.0" j2_home="0.0187" j3_home="-0.2455"
+    j4_home="0.0" j5_home="0.2268" j6_home="0.0"
   />
 
   <xacro:ar_gripper_ros2_control
